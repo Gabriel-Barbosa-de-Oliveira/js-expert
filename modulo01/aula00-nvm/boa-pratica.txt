@@ -1,0 +1,3 @@
+Interessante sempre utilizar o engines no package json para travar qual a versão deve ser utilizada do node no projeto 
+
+npm -v > .nvmrc - cria o arquivo com a versão do node da sua maquina 
