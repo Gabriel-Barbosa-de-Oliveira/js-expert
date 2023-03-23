@@ -6,7 +6,7 @@ const BASE_URL_2 = "https://swapi.dev/api/planets/2/";
 ;(async () => {
     {
         const service = new Service()
-        const dados = service.makeRequest(BASE_URL_1)
-        console.log(dados)
+        const dados = await service.makeRequest(BASE_URL_2)
+        console.log(JSON.stringify(dados))
     }
 })()
