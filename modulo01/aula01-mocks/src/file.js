@@ -21,14 +21,15 @@ class File {
         //...variavel = restante do arquivo
         const [header, ...fileWithoutHeader] = csvString.split(/\r?\n/)
         const isHeaderValid = header === options.fields.join(",");
-        if(!isHeaderValid){
+        if (!isHeaderValid) {
             return {
                 error: error.FILE_FIELDS_ERROR_MESSAGE,
                 valid: false
             }
         }
 
-        if (!fileWithoutHeader.length) {
+        if (!fileWithoutHeader.length ||
+            fileWithoutHeader.length > options.maxLines) {
             return {
                 error: error.FILE_LENGTH_ERROR_MESSAGE,
                 valid: false
