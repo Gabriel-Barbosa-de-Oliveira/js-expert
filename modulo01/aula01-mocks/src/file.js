@@ -19,14 +19,22 @@ class File {
         //[0] = headers
         //[1] = linha 1
         //...variavel = restante do arquivo
-        const [headers, ...fileWithoutHeader] = csvString.split(/\r?\n/)
+        const [header, ...fileWithoutHeader] = csvString.split(/\r?\n/)
+        const isHeaderValid = header === options.fields.join(",");
+        if(!isHeaderValid){
+            return {
+                error: error.FILE_FIELDS_ERROR_MESSAGE,
+                valid: false
+            }
+        }
+
         if (!fileWithoutHeader.length) {
             return {
                 error: error.FILE_LENGTH_ERROR_MESSAGE,
                 valid: false
             }
         }
-        console.log(headers, fileWithoutHeader)
+        console.log(header, fileWithoutHeader)
     }
 }
 
