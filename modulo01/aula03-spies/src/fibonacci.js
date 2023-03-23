@@ -1,5 +1,5 @@
 class Fibonacci {
-    * execute(input, current = 0, next = 1) {
+    * execute(input, current = 0, next = 1) { // Iterator Mode - gera por demanda
         //Processou todas as sequencias e para! 
         if (input === 0) {
             return
