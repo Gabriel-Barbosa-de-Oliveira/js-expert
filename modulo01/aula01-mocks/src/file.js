@@ -11,6 +11,8 @@ class File {
         const content = await readFile(filePath, "utf8")
         const validation = this.isValid(content)
         if (!validation.valid) throw new Error(validation.error)
+        const result = this.parseCSVToJson(content)
+        return result;
     }
 
     static isValid(csvString, options = DEFAULT_OPTION) {
@@ -19,7 +21,7 @@ class File {
         //[0] = headers
         //[1] = linha 1
         //...variavel = restante do arquivo
-        const [header, ...fileWithoutHeader] = csvString.split(/\r?\n/)
+        const [header, ...fileWithoutHeader] = this.splitCSV(csvString)
         const isHeaderValid = header === options.fields.join(",");
         if (!isHeaderValid) {
             return {
@@ -35,8 +37,33 @@ class File {
                 valid: false
             }
         }
-        console.log(header, fileWithoutHeader)
+
+        return { valid: true }
     }
+
+    static splitCSV(csvString) {
+        return csvString.split(/\r?\n/);
+    }
+
+    static parseCSVToJson(csvString) {
+        const lines = this.splitCSV(csvString)
+        //remover a primeira linha(header)
+        const firstLine = lines.shift();
+        const header = firstLine.split(",");
+        const users = lines.map(line => {
+            const columns = line.split(",")
+            let user = {}
+            for (const index in columns) {
+                user[header[index]] = columns[index].trim()
+            }
+            return user
+        })
+
+        return users
+
+    }
+
+
 }
 
 module.exports = File;
