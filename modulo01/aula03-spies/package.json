@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node src/service.test.js"
+    "test": "node src/fibonacci.test.js"
   },
   "engines": {
     "node": "18"
