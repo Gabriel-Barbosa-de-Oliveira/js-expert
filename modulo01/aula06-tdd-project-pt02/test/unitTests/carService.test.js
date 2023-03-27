@@ -44,21 +44,34 @@ describe("CarService Suite Tests", () => {
             carService.getRandomPositionFromArray.name
         ).returns(carIdIndex)
 
-        console.log({carCategory})
         const result = carService.chooseRandomCar(carCategory)
         const expected = carCategory.carIds[carIdIndex]
+        expect(carService.getRandomPositionFromArray.calledOnce).to.be.ok
         expect(result).to.be.equal(expected)
+
     })
 
 
-    // it("given a car category it should return an available car", async () => {
-    //     const car = mocks.validCar
-    //     const carCategory = Object.create(mocks.validCarCategory) //Object.create -> cria uma instancia imutavel do objeto (Como se fosse um cloneDeep)
-    //     carCategory.ids = [car.id];
+    it("given a car category it should return an available car", async () => {
+        const car = mocks.validCar
+        const carCategory = Object.create(mocks.validCarCategory) //Object.create -> cria uma instancia imutavel do objeto (Como se fosse um cloneDeep)
+        carCategory.carIds = [car.id];
 
-    //     const result = await carService.getAvailableCar(carCategory);
-    //     const expected = car;
+        sandbox.stub(
+            carService.carRepository,
+            carService.carRepository.find.name
+        ).resolves(car)
 
-    //     expect(result).to.be.deep.equal(expected);
-    // })
+        sandbox.spy(
+            carService,
+            carService.chooseRandomCar.name
+        )
+
+        const result = await carService.getAvailableCar(carCategory);
+        const expected = car;
+        
+        expect(carService.chooseRandomCar.calledOnce).to.be.ok
+        expect(carService.carRepository.find.calledWithExactly(car.id)).to.be.ok
+        expect(result).to.be.deep.equal(expected);
+    })
 })
