@@ -87,12 +87,19 @@ describe("CarService Suite Tests", () => {
         //age: 50 - 1.3 tax - categoryPrice 37.6
         //37.6 * 1.3 = 48,88 * 5 days = 244.40
 
+        //Testes não podem depender de dados externos 
+
+        sandbox.stub(
+            carService,
+            "taxesBasedOnAge"
+        ).get(() => [{ from: 40, to: 50, then: 1.3 }])
+
         const expected = carService.currencyFormat.format(244.40)
         const result = carService.calculateFinalPrice(
             customer,
             carCategory,
             numberOfDays
-        ) 
+        )
 
 
         expect(result).to.be.deep.equal(expected)
