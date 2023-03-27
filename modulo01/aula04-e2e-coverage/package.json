@@ -1,0 +1,19 @@
+{
+  "name": "aula04-e2e-coverage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/api.js",
+    "test": "node src/fibonacci.test.js"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "keywords": [],
+  "author": "Gabriel Barbosa",
+  "license": "ISC",
+  "devDependencies": {
+    "sinon": "^15.0.1"
+  }
+}
