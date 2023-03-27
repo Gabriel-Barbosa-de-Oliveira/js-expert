@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/api.js",
-    "test": "node src/fibonacci.test.js"
+    "test": "npx mocha -w src/*.test.js"
   },
   "engines": {
     "node": "18"
@@ -14,6 +14,7 @@
   "author": "Gabriel Barbosa",
   "license": "ISC",
   "devDependencies": {
-    "sinon": "^15.0.1"
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   }
 }
