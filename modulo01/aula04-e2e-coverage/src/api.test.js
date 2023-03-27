@@ -37,7 +37,17 @@ describe("Api Suite Test", () => {
             const response = await supertest(app).post("/login")
                 .send({ "username": "GabrielBarbosa", "password": "1234" })
                 .expect(401)
+            assert.ok(response.unauthorized)
             assert.strictEqual(response.text, "Log in failed!")
+        })
+    })
+
+    describe('/hi:get - 404', () => {
+        it("should request an existing page and return HTTP Status 404", async () => {
+            const response = await supertest(app).get("/hi")
+
+                .expect(404)
+            assert.strictEqual(response.text, "not found")
         })
     })
 })
