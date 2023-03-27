@@ -29,7 +29,7 @@ describe("CarService Suite Tests", () => {
     })
 
     it("should retrieve a random position from an array", () => {
-        const data = [0,1,2,3,4]
+        const data = [0, 1, 2, 3, 4]
         const result = carService.getRandomPositionFromArray(data)
 
         expect(result).to.be.lte(data.length).and.be.gte(0)
@@ -38,7 +38,7 @@ describe("CarService Suite Tests", () => {
     it("should choose the first id from carIds in carCategory", () => {
         const carCategory = mocks.validCarCategory
         const carIdIndex = 0
-        
+
         sandbox.stub(
             carService,
             carService.getRandomPositionFromArray.name
@@ -69,9 +69,32 @@ describe("CarService Suite Tests", () => {
 
         const result = await carService.getAvailableCar(carCategory);
         const expected = car;
-        
+
         expect(carService.chooseRandomCar.calledOnce).to.be.ok
         expect(carService.carRepository.find.calledWithExactly(car.id)).to.be.ok
         expect(result).to.be.deep.equal(expected);
+    })
+
+    it("given a carCategory, customer and numberOfDays it should calculate final amount in real", async () => {
+        const customer = Object.create(mocks.validCustomer)
+        customer.age = 50
+
+        const carCategory = Object.create(mocks.validCarCategory);
+        carCategory.price = 37.6
+
+        const numberOfDays = 5
+
+        //age: 50 - 1.3 tax - categoryPrice 37.6
+        //37.6 * 1.3 = 48,88 * 5 days = 244.40
+
+        const expected = carService.currencyFormat.format(244.40)
+        const result = carService.calculateFinalPrice(
+            customer,
+            carCategory,
+            numberOfDays
+        ) 
+
+
+        expect(result).to.be.deep.equal(expected)
     })
 })
