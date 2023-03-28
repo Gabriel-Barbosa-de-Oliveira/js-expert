@@ -1,0 +1,19 @@
+Call Stack 
+
+Fila de operações de ações do programa 
+Segue o FILO - First In Last Out 
+Callstack é uma tabela onde a chave é um endereço de memoria e o valor pode ser um tipo primitivo de dado ou um apontamento para outro endereço de memoria 
+
+Memory Heap 
+
+Pilha de memoria - armazena endereços de memoria apontados pelo callstack 
+
+
+CallStack - tipos primivos 
+Memory Heap - referencias de memoria
+
+https://levelup.gitconnected.com/understanding-call-stack-and-heap-memory-in-js-e34bf8d3c3a4
+
+https://medium.com/@allansendagi/javascript-fundamentals-call-stack-and-memory-heap-401eb8713204
+
+https://www.mattzeunert.com/2017/03/29/v8-object-size.html

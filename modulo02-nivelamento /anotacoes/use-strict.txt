@@ -1,0 +1,16 @@
+Use Strict serve para evitar erros de semantica silenciosa 
+Usado em ts e babel - ajuda a evitar muitos erros de produção 
+Js é convertido para binário no motor do node js 
+Quanto mais otimizado mais rapido sera o processo de compilação 
+Sempre utilizar o strict mode 
+Introduzido no ECMA Script 5
+Use strict força a seguir regras de conduta afim de dificultar o aparecimento de problemas em produção
+
+Teoria: 
+
+https://www.w3schools.com/js/js_strict.asp
+
+
+Exemplos: 
+
+https://www.geeksforgeeks.org/strict-mode-javascript/

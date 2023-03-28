@@ -1,0 +1,5 @@
+Immutability - tipos primitivos (gera uma copia em memoria)
+
+Mutabillity - objetos (gera uma copia de um endereço de memoria)
+
+https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0

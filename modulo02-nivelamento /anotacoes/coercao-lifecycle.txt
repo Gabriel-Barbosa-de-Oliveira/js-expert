@@ -1,0 +1,16 @@
+Coerçao é o processo de transformação de dados dentro do js.
+
+Existem apenas 3 tipos 
+ 
+Ou o valor vai ser uma string ou um boolean ou um number 
+
+Existem coecões implicitas e explicitas 
+
+implicitas - o js faz sozinho a conversão 
+
+Exemplo 
+
+Loose Equality Operator (==)
+
+Strict Equality Operator (===)
+
