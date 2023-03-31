@@ -1,0 +1,54 @@
+123.123.123-14
+321.123.345-20
+200.300.500-19
+
+\d - pegar digito (numero de 0 a 9)
+^ - pega o inicio de cada linha
+$ - sempre termina uma expressão regular (indica o fim do processamento)
+
+regex101.com
+^\d{3}.\d{3}.\d{3}-\d{2}$
+
+[.-] - pega apenas . e - (Pode ser usado para replace)
+
+Barbosa, Gabriel
+Gomes, Laila
+Johson, Jose
+
+^(\w+),\s(\w+)$ - Acha o padrão dos nomes
+
+{firstName: "$2", lastName: "$1"} - faz o replace com base na regex com base nos grupos criados
+
+{firstName: "Gabriel", lastName: "Barbosa"} 
+{firstName: "Laila", lastName: "Gomes"} 
+{firstName: "Jose", lastName: "Johson"} 
+
+\w - pega uma letra ou um numero 
+
+\w+ pega uma letra ou um numero ate que tenha um caracter especial
+
+\s - pega o espaço
+
+\S - ignora o espaço
+
+(\w+) - agrupa uma palavra
+
+\[(.*?)\]\(([http|https].*?)\) - separa palavras entre [] e ()
+
+[Erick Wendel](https://erickwendel.com) faz palestras e você devia segui-lo lá no [Twitter] http://twitter.com/erickwendel_) ou até no
+[Instagram](https://instagram.com/erickwendel_)
+
+Ah e pode pesquisar no [Google](https://google.com) ou
+[Yahoo](https://yahoo.com)
+
+vai que vai!
+
+<a href="$2">$1</a> - converte pro modelo abaixo
+
+<a href="https://erickwendel.com">Erick Wendel</a> faz palestras e você devia segui-lo lá no [Twitter] http://twitter.com/erickwendel_) ou até no
+<a href="https://instagram.com/erickwendel_">Instagram</a>
+
+Ah e pode pesquisar no <a href="https://google.com">Google</a> ou
+<a href="https://yahoo.com">Yahoo</a>
+
+vai que vai!
