@@ -42,7 +42,7 @@ class Person {
         this.rua = rua.match(evaluateRegex(/(?<=\sa\s).*$/)).join()
         this.numero = numero
         //começa a buscar depois do espaço, pega qualquer letra ou digito ate o fim da linha(poderia ser o .* tbm)
-        this.bairro = bairro.match(evaluateRegex(/(?<=\s)\w+$/)).join()
+        this.bairro = bairro.match(evaluateRegex(/(?<=\s).*$/)).join()
         //remove o ponto lieteral (.) do fim da frase
         this.estado = estado.replace(evaluateRegex(/\./), "")
 
