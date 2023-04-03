@@ -1,0 +1,52 @@
+Good to know 
+
+Design Pattern - Solução geral e reutilizavel para resolver um problema recorrente. Pode ser usado em diferentes situações 
+Anti Pattern - Padrão contra indicado 
+Over Engineering - Complicar as coisas demais 
+Big Ball of Mud - Aplicações que tem muita coisa que ngm sabe o que faz 
+
+
+Dry - DONT REPEAT YOURSELF - Nunca duplique codigo 
+Kiss - KEAP IT SIMPLE STUPIDY - Deixar o mais simples possivel 
+Yagni - YOU ARENT GONNA NEED IT - Voce não vai precisar disso agora
+
+Clean Code - 
+
+https://github.com/ryanmcdermott/clean-code-javascript
+
+
+S.O.L.I.D - 
+
+S - Single Responsability Principle - O modulo deve ter uma e apenas uma razão para mudar. Caso isso não aconteça as responsabilidades devem ser revistas imediatamente 
+O - Open/Closed Principle - Entidades do sistema devem ser abertas para extensão e fechadas para modificação. (Novas features tem que ser desenvolvidas sem que a alteração quebre as features ja existentes)
+L - Liskov Substitution Principle - Classes filhas podem herdar de uma classe base e substitituir se necessario um comportamento da classe pai
+I - Interface Segreation Principle - Clientes não devem ser forçados a dependerem de uma classe que eles não usam. Interfaces podem ser divididas por atomicidade por exemplo ICRUD - create/read/update/delete -> ICRUD - IREAD/IWRITE/IREAD
+D - Dependency Inversion Principle - As dependencias tem que depender de abstrações em vez de implementações. Ex: Facade
+
+https://levelup.gitconnected.com/javascript-clean-code-solid-9d135f824180
+
+Links de referencias
+
+Clean Code JS: https://github.com/ryanmcdermott/clean-code-javascript
+
+Exemplos: https://levelup.gitconnected.com/javascript-clean-code-solid-9d135f824180
+
+https://dzone.com/articles/software-design-principles-dry-and-kiss
+
+http://www.macoratti.net/15/12/net_yagni1.htm
+
+https://en.wikipedia.org/wiki/Software_design_pattern
+
+https://en.wikipedia.org/wiki/Anti-pattern
+
+https://ezdevs.com.br/conhecendo-os-principios-do-solid/
+
+https://en.wikipedia.org/wiki/SOLID
+
+https://www.ibm.com/developerworks/library/j-ft10/index.html
+
+https://medium.com/@cramirez92/s-o-l-i-d-the-first-5-priciples-of-object-oriented-design-with-javascript-790f6ac9b9fa
+
+https://hackernoon.com/understanding-solid-principles-in-javascript-w1cx3yrv
+
+https://sourcemaking.com/antipatterns
