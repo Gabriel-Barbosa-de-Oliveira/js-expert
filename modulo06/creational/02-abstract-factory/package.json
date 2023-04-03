@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "server": "node ui/index.mjs",
+    "web": "npx http-server .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
