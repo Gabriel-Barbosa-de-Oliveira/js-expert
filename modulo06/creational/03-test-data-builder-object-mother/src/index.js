@@ -16,6 +16,14 @@ function productValidator(product){
         errors.push(`name: invalid value, current[${product.name}] expected to have only words`)
     }
 
+    if(!(product.price >=1 && product.price <=1000)){
+        errors.push(`price: invalid value, current [${product.price}] expected beetween 1 and 1000`)
+    }
+
+    if(!(['electronic', 'organic'].includes(product.category))){
+        errors.push(`category: invalid value, current [${product.category}] expected to be either organic or electronic`)
+    }
+
     return {
         result: errors.length === 0,
         errors

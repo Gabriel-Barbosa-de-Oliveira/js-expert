@@ -41,6 +41,26 @@ describe("Product Validation Rules", () => {
 
         expect(result).to.be.deep.equal(expected)
     })
-    it("should return an object error when creating a Product with invalid price")
-    it("should return an object error when creating a Product with invalid category")
+    it("should return an object error when creating a Product with invalid price", () => {
+        const product = ProductDataBuilder.aProduct().withInvalidPrice().build()
+        const result = productValidator(product)
+
+        const expected = {
+            errors: ["price: invalid value, current [2000] expected beetween 1 and 1000"],
+            result: false
+        }
+
+        expect(result).to.be.deep.equal(expected)
+    })
+    it("should return an object error when creating a Product with invalid category", () => {
+        const product = ProductDataBuilder.aProduct().withInvalidCategory().build()
+        const result = productValidator(product)
+
+        const expected = {
+            errors: ["category: invalid value, current [mechanic] expected to be either organic or electronic"],
+            result: false
+        }
+
+        expect(result).to.be.deep.equal(expected)
+    })
 })
