@@ -19,8 +19,28 @@ describe("Test Data Builder", () => {
 })
 
 describe("Product Validation Rules", () => {
-    it("should return an object error when creating a Product with invalid Id")
-    it("should return an object error when creating a Product with invalid name")
+    it("should return an object error when creating a Product with invalid Id", () => {
+        const product = ProductDataBuilder.aProduct().withInvalidId().build()
+        const result = productValidator(product)
+
+        const expected = {
+            errors: ["id: invalid length, current [1] expected to be between 2 and 20"],
+            result: false
+        }
+
+        expect(result).to.be.deep.equal(expected)
+    })
+    it("should return an object error when creating a Product with invalid name", () => {
+        const product = ProductDataBuilder.aProduct().withInvalidName().build()
+        const result = productValidator(product)
+
+        const expected = {
+            errors: ["name: invalid value, current[abc123] expected to have only words"],
+            result: false
+        }
+
+        expect(result).to.be.deep.equal(expected)
+    })
     it("should return an object error when creating a Product with invalid price")
     it("should return an object error when creating a Product with invalid category")
 })
