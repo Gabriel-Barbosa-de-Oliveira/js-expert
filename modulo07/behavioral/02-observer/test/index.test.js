@@ -3,6 +3,9 @@ import PaymentSubject from "../src/subjects/paymentSubject.js";
 import Payment from "../src/events/payment.js";
 
 describe("Test Suit for Observer Patter", () => {
+    beforeAll(() => {
+        jest.spyOn(console, console.log.name).mockImplementation(() => {}) //Retira os logs dos testes
+    })
     test("#PaymentSubject notify observers", () => {
         const subject = new PaymentSubject()
         const observer = {
