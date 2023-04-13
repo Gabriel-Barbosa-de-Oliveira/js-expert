@@ -1,8 +1,11 @@
-import { expect, describe, test, jest } from "@jest/globals"
+import { expect, describe, test, jest, beforeEach } from "@jest/globals"
 import BaseBusiness from "../src/business/base/baseBusiness.js"
 import { NotImplementedException } from "../src/util/exceptions"
 
 describe("#BaseBussiness", () => {
+    beforeEach(() => {
+        jest.resetAllMocks()
+    })
     test("should throw an error when child classe doesnt implemented _validateRequiredFields function", () => {
         class ConcreteClass extends BaseBusiness { }
         const concreteClass = new ConcreteClass()
@@ -38,5 +41,27 @@ describe("#BaseBussiness", () => {
 
         expect(() => concreteClass.create({})).toThrow(validationError)
     })
-    test.todo("should call _create and _validateRequiredFields on create")
+    test("should call _create and _validateRequiredFields on create", () => {
+        const VALIDATION_SUCCEEDED = true
+        const CREATE_SUCCEEDED = true
+
+        class ConcreteClass extends BaseBusiness {
+            _validateRequiredFields = jest.fn().mockReturnValue(VALIDATION_SUCCEEDED)
+            _create = jest.fn().mockReturnValue(CREATE_SUCCEEDED)
+        }
+
+        const concreteClass = new ConcreteClass()
+
+        const createFromBaseClass = jest.spyOn(
+            BaseBusiness.prototype,
+            BaseBusiness.prototype.create.name
+        )
+
+        const result = concreteClass.create({})
+
+        expect(result).toBeTruthy()
+        expect(createFromBaseClass).toHaveBeenCalled()
+        expect(concreteClass._create).toHaveBeenCalled()
+        expect(concreteClass._validateRequiredFields).toHaveBeenCalled()
+    })
 })
