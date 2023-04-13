@@ -1,0 +1,5 @@
+https://dzone.com/articles/design-patterns-template-method
+
+https://www.codeproject.com/Articles/307452/common-use-of-Template-Design-pattern-Design-pat
+
+https://github.com/facebook/jest/issues/5038#issuecomment-513193352
