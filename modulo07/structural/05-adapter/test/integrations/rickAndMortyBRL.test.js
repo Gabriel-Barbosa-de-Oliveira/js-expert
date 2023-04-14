@@ -5,6 +5,9 @@ import RickAndMortyBRL from "../../src/business/integrations/rickAndMortyBRL.js"
 import axios from "axios"
 
 describe("#RickAndMortyBRL", () => {
+
+    beforeEach(() => jest.clearAllMocks())
+
     test('#getCharatersJSON should return a list of Character Entity', async () => {
         const response = JSON.parse(await fs.readFile("./test/mocks/characters.json"))
         const expected = response.results.map(char => new Character(char))
@@ -12,5 +15,11 @@ describe("#RickAndMortyBRL", () => {
         const result = await RickAndMortyBRL.getCharactersFromJSON()
         expect(result).toStrictEqual(expected)
     })
-    test.todo('#getCharatersJSON should return an empty list if the API returns nothing')
+    test('#getCharatersJSON should return an empty list if the API returns nothing', async () => {
+        const response = JSON.parse(await fs.readFile("./test/mocks/characters-empty.json"))
+        const expected = response.results
+        jest.spyOn(axios, "get").mockResolvedValue({ data: response })
+        const result = await RickAndMortyBRL.getCharactersFromJSON()
+        expect(result).toStrictEqual(expected)
+    })
 })
