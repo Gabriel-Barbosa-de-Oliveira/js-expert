@@ -7,6 +7,7 @@ const assert = require("assert");
 ; (async () => {
 
     //variaveis criadas nesse bloco, só são validas durante sua execução 
+    //Blocos de execução isolados. Cada 'objeto'tem escopo fechado
     {
         const filePath = "./mocks/emptyFile-invalid.csv"
         const expected = new Error(error.FILE_LENGTH_ERROR_MESSAGE)
