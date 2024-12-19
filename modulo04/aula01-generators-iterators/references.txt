@@ -1,0 +1,3 @@
+https://javascript.info/async-iterators-generators
+https://jakearchibald.com/2017/async-iterators-and-generators/?_gl=1*1skxx4*_ga*Nzc4NzI1NDU5LjE3MzQ1NjAyNjM.*_ga_37GXT4VGQK*MTczNDYyMTcyMC4zLjEuMTczNDYyNzU0Ny4wLjAuMA..
+https://github.com/nodejs/node/blob/b938f88204945b02fb9a79b387c4961714fdaeb0/lib/internal/fs/dir.js?_gl=1*1skxx4*_ga*Nzc4NzI1NDU5LjE3MzQ1NjAyNjM.*_ga_37GXT4VGQK*MTczNDYyMTcyMC4zLjEuMTczNDYyNzU0Ny4wLjAuMA..#L222
