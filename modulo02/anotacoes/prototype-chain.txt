@@ -1,0 +1,15 @@
+Internamente tudo dentro do js é um objeto
+Em js herança é tratada atraves do prototype (herança de prototipo)
+Quando usamos herança podemos usar alguns dos conceitos de SOLID 
+
+Single Responsability
+Open closed (Entidades do sistema como classe devem ser abertas para extenção mas fechadas para modificação)
+Liskov's Substitution (Uma vez que criamos uma classe derivada de uma classe base ela n deve quebrar as funcionalidades existentes no sistema)
+Interface Segregation 
+Dependency Inversions
+
+Prototype Chain 
+
+- Verificação de existencia de propriedade do objeto. Se não achar procura no prototype do objeto. Se não achar procura no prototype do prototype
+Se mesmo assim n encontrar retorna undefined. 
+Ou seja vai olhar todas as instancias vinculadas ao objeto ate retornar algo. Se n encontrar nada retorna undefine
