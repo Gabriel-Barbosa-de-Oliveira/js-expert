@@ -1,0 +1,3 @@
+npm version patch - adiciona uma nova versão no package json para patch 
+npm outdated - mostra se teve alguma atualização nos pacotes 
+npm update - atualiza todos os pacotes 
