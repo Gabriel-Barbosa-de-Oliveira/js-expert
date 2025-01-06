@@ -1,3 +1,19 @@
 npm version patch - adiciona uma nova versão no package json para patch 
 npm outdated - mostra se teve alguma atualização nos pacotes 
 npm update - atualiza todos os pacotes 
+
+Semver - Semantic Version 
+Respeitar sempre as versões do js 
+0.0.0 - major.minor.fix
+
+Dependency hell - Falta de controle nas dependencias 
+
+^0.0.1 - Pega qualquer dependencia que n tenha um 0 
+~0.0.1 - So pega novos patchs dentro do mesmo minor 
+>1.0.0 <2.0.1 - Range. Só vai pegar o que tiver entre as versões especificadas  
+
+npm rm nome do pacote - Remove o pacote 
+
+https://semver.org/
+https://snyk.io/blog/what-is-package-lock-json/
+https://snyk.io/blog/why-npm-lockfiles-can-be-a-security-blindspot-for-injecting-malicious-modules/
