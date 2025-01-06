@@ -1,0 +1,20 @@
+REPL - READ EVAL PRINT LOOP
+Ler executar e exibir valores de funções  
+(Não recomendado para desenvolvimento mas para resolver problemas)
+
+REPL é uma forma de debuggar o codigo 
+
+para iniciar o processo basta fazer um node inspect index.mjs 
+
+list(numero de linhas) - Mostra a quantidade de linhas do codigo desejada 
+setBreakpoint(numero da linha) ou sb(numero da linha) - coloca o breakpoint na linha desajada 
+cont - manda a execução continuar 
+exec nomedavariavel - mostra o valor da variavel
+clearBreakpoint(nomedoarquivo, linha) - limpa os breakpoints
+next - continua para proxima linha 
+
+repl - comando para iniciar
+    nome da variavel - para mostrar o nome da variavel
+
+https://blog.cleancoder.com/uncle-bob/2020/05/27/ReplDrivenDesign.html?_gl=1*1mhnrj7*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNjE4NjM5NC4xLjEuMTczNjE4Njc3My4wLjAuMA..
+https://nodejs.org/api/repl.html?_gl=1*1mhnrj7*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNjE4NjM5NC4xLjEuMTczNjE4Njc3My4wLjAuMA..#repl_repl
