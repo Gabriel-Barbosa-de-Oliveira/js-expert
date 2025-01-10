@@ -1,0 +1,5 @@
+Positive Look Ahead 
+
+(?<containerId>\w+)\W+(?=nginx) = pega do nginx pra tras 
+
+(?<containerId>\w+) = nome para grupo usando regex
