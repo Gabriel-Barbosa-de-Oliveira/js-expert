@@ -13,14 +13,17 @@ const {
 } = templates;
 
 import {
+    factoryTemplateMock,
     repositoryTemplateMock,
     serviceTemplateMock
 } from "./mocks/index.js"
+import { factoryTemplate } from "../../src/templates/factoryTemplate.js";
 
 describe("#Codegen 3-layers arch", () => {
     const componentName = "product"
     const repositoryName = `${componentName}Repository`
     const serviceName = `${componentName}Service`
+    const factoryName = `${componentName}Factory`
 
     beforeEach(() => {
         jest.restoreAllMocks()
@@ -50,7 +53,16 @@ describe("#Codegen 3-layers arch", () => {
         expect(result).toStrictEqual(expected)
     })
 
-    test.todo("#should generate factory template")
+    test("#should generate factory template", () => {
+        const expected = {
+            fileName: factoryName,
+            template: factoryTemplateMock
+        }
+
+        const result = factoryTemplate(componentName, repositoryName, serviceName)
+
+        expect(result).toStrictEqual(expected)
+    })
 
 
 })
