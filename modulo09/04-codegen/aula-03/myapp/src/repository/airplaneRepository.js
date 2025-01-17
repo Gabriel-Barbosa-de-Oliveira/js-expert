@@ -1,5 +1,5 @@
-export default `
-export default class ProductRepository {
+
+export default class AirplaneRepository {
     constructor() { }
 
     create(data) {
@@ -17,4 +17,4 @@ export default class ProductRepository {
     delete(id) {
         return Promise.reject("method not implemented!")
     }
-}`
+}
