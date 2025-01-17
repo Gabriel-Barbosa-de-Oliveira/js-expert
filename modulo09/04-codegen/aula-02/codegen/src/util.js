@@ -1,10 +1,13 @@
 export default class Util {
-
-    //gabrielbarbosa => [0] => g
-    //first = g, rest = abrielbarbosa
+    // erickwendel => [0] => e
+    // first = e, rest = rickwendel
     static #transform({ str: [first, ...rest], upperCase = true }) {
         if(!first) return ''
-        const firstLetter = upperCase ? first.toUpperCase() : first.toLowerCase()
+        
+        const firstLetter = upperCase ?
+            first.toUpperCase() :
+            first.toLowerCase()
+
         return [firstLetter, ...rest].join('')
     }
 
