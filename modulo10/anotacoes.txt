@@ -14,3 +14,7 @@ Response = Writable Stream
 Etl's - Extract Transform and Load =  Readable/Transform/Writable (É basicamente a mesma coisa com nome diferente)
 
 Watermarks - Tipo de idendificação do node js para 
+
+Socket é uma duplex stream 
+
+Duplex stream é basicamente a mesma coisa que um Transform
