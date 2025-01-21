@@ -18,3 +18,9 @@ Watermarks - Tipo de idendificação do node js para
 Socket é uma duplex stream 
 
 Duplex stream é basicamente a mesma coisa que um Transform
+
+https://erickwendel.com/talk/detail/5ee6b2452c16eb4db7e7b776?_gl=1*1ddtnqp*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzQ2OTc5Mi4xNC4xLjE3Mzc0Njk4NjcuMC4wLjA.
+
+https://pt.slideshare.net/slideshow/andrii-shumada-use-cases-of-nodejs-streams/77835224
+
+https://github.com/max-mapper/mississippi?_gl=1*1ddtnqp*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzQ2OTc5Mi4xNC4xLjE3Mzc0Njk4NjcuMC4wLjA.#duplex
