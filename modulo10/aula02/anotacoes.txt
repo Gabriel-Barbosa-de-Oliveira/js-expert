@@ -1,0 +1,3 @@
+node localhost:3000 | tee log.txt
+
+Esse comando executa o localhost e manda os logs todos para o arquivo log.txt
