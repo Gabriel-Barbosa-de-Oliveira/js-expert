@@ -1,0 +1,16 @@
+Node Streams - Metodo para carregar grandes volumes de dados por demanda 
+Quebra o volume grande em pequenos chunks 
+
+
+Readable Streams - Fonte de dados (Arquivo, requests)
+Transform Streams - Transforma os dados e filtra os chunks, conversão de dados
+Writable Streams - Qualquer coisa que faz a saida do processo
+
+Pipelines - 
+
+Request = Readable Stream
+Response = Writable Stream
+
+Etl's - Extract Transform and Load =  Readable/Transform/Writable (É basicamente a mesma coisa com nome diferente)
+
+Watermarks - Tipo de idendificação do node js para 
