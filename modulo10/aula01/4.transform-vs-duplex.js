@@ -1,4 +1,4 @@
-import { Duplex } from 'stream';
+import { Duplex, Transform } from 'stream';
 
 let count = 0;
 const server = new Duplex({
@@ -34,3 +34,22 @@ server.push(`[duplex] hey this is also a readable!\n`)
 
 // server
 // .pipe(process.stdout)
+
+const transformToUpperCase = Transform({
+    objectMode: true,
+    transform(chunk, enc, cb) {
+        cb(null, chunk.toUpperCase())
+    }
+})
+
+// transform é tambem um duplex, mas não possuem comunicação independente
+
+transformToUpperCase.write('[Transform] Hello from write!') //entra dentro do upperCase da linha 41
+
+//o push vai ignorar o que vc tem na função transform
+transformToUpperCase.push("[transform] Hello from push\n") //da um bypass no transform e continua o processo
+
+server
+    .pipe(transformToUpperCase)
+    //redireciona todos os dados de readable para writable da duplex    
+    .pipe(server)
