@@ -1,0 +1,3 @@
+https://medium.com/tableless/n%C3%A3o-lance-exceptions-em-seu-dom%C3%ADnio-use-notifications-70b31f7148d3?_gl=1*19ck3q2*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU3MzA4NC4yMi4xLjE3Mzc1NzMwODQuMC4wLjA.
+https://martinfowler.com/articles/replaceThrowWithNotification.html?_gl=1*19ck3q2*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU3MzA4NC4yMi4xLjE3Mzc1NzMwODQuMC4wLjA.
+https://martinfowler.com/eaaDev/Notification.html?_gl=1*19ck3q2*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU3MzA4NC4yMi4xLjE3Mzc1NzMwODQuMC4wLjA.
