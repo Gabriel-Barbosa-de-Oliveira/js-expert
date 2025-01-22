@@ -1,0 +1,3 @@
+https://nodejs.org/api/process.html?ref=hackernoon.com&_gl=1*1jeb7nt*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU2OTQ0MC4yMS4xLjE3Mzc1Njk0NjcuMC4wLjA.#process_signal_events
+https://hackernoon.com/graceful-shutdown-in-nodejs-2f8f59d1c357?_gl=1*1jeb7nt*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU2OTQ0MC4yMS4xLjE3Mzc1Njk0NjcuMC4wLjA.
+https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html?ref=hackernoon.com&_gl=1*1jeb7nt*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzU2OTQ0MC4yMS4xLjE3Mzc1Njk0NjcuMC4wLjA.
