@@ -1,0 +1,19 @@
+O que faz um consultor de performance de apps ? 
+
+Analise estatica de codigo 
+Analise dinamica de codigo 
+Analise de conexões externas 
+Documentação/report
+Sugestões de melhoria e/ou implementação
+
+Algo mto abstrato 
+
+Sempre é possivel melhorar 
+
+A dificuldade é delimitar quanto gastar para corrigir e se vale a pena 
+
+Qualidade do trabalho ligada diretamente a quantidade de monitoramentos que o cliente tem 
+
+Autocannon - Ajuda a analisar os pontos da aplicação 
+Clinic - sugere o que mudar para melhorar tbm 
+
