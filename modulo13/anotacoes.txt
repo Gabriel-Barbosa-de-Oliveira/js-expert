@@ -1,0 +1,156 @@
+Diferença entre thread e processo 
+
+Navegador = Processo 
+Aplicativo de musica = processo 
+
+Não compartilham dados 
+
+Comunicação via IPC - Inter Process comunication 
+
+Child process - subprocessos de um processo que comunicam via IPC 
+
+Processo pode ter multiplas threads 
+
+Threads unidade de execução de processo
+
+No node elas tem o nome de worker threads
+Rodam em segundo plano
+
+Texto da aula 
+
+Talvez uma das maiores dúvidas sobre o Node.js é sobre ele ser single thread. Mas será que isso é realmente verdade? 
+
+A final desde o Node.js versão 14, temos as worker threads e desde a primeira versão do Node.js temos as child processes.
+
+
+
+Tá mas o que isso quer dizer? 
+
+
+
+Para você que nunca ouviu falar sobre o que é uma thread e o que é um processo, a parada é mais simples do que parece. 
+
+
+
+Tudo isso faz parte da ideia de você poder usar o máximo dos seus recursos para executar o máximo de tarefas em um menor tempo possível.
+
+
+
+Um processo em um sistema operacional, você pode imaginar como um programa rodando em sua máquina, quando você precisa fazer uma pesquisa, você vai lá e inicializa o seu navegador, o seu navegador é um processo na sua máquina, quando você precisa ouvir música e abre outro programa, adivinha o programa de música é um outro processo rodando em sua máquina.
+
+
+
+Só que, o navegador e o aplicativo de música não compartilham memória, não compartilham dados e dificilmente irão se comunicar.
+
+
+
+Isso porque os processos têm sua própria memória heap, sua própria memória stack e mapeamento de dados. 
+
+
+
+E tudo isso tem um custo, uma vez que você precisa estabilizar a conexão entre um processo e outro, essa chamada é feita via protocolo IPC ou Inter-process communication que gera bastante chamadas ao sistema operacional.
+
+
+
+Bom, um processo é algo caro para o sistema e tem seu próprio estado, tem todo um ciclo de vida, ele pode gerar sub-processos, que é o que chamamos de child processes, em Node.js. Ou seja, geramos um programa totalmente novo e isolado para processar coisas em segundo plano.
+
+
+
+Só que, tudo que um processo faz está diretamente ligada com operações de I/O ou Input/Ouput, sejam elas aguardar uma resposta do sistema operacional, escrever arquivos em disco e por aí vai. 
+
+
+
+Quando usamos o módulo Cluster no capítulo anterior, o método fork estava fazendo justamente agendando a execução de subprocessos e esses subprocessos se comunicavam com o processo pai via IPC balanceando a carga das requisições.
+
+
+
+Por isso, se você precisa trabalhar pesado com operações de I/O, processos e subprocessos são mais eficientes para quando você estiver acessando um banco de dados externo, processando arquivos, enviando mensagens para a internet, e por aí vai.
+
+
+
+Não vou me aprofundar muito nesse assunto, mas faltou algo crucial sobre processos, um processo na verdade pode ter múltiplas threads.
+
+
+
+Uma thread é uma unidade de execução de um processo, você provavelmente já ouviu sobre ela com outro nome, em Node.js chamamos de Workers ou simplesmente de  Worker Threads
+
+
+
+O objetivo é bem parecido, mas Worker Threads possuem algumas peculiaridades que vou falar na aula específica sobre Worker Threads.
+
+
+
+Uma thread é usada para agendar uma tarefa pesada para outra unidade de processamento, para outra thread, dentro do seu processo e continua o seu processamento, quando a thread terminar a execução ela aciona um callback informando que a tarefa terminou.
+
+
+
+Os benefícios de threads em sistemas operacionais são diversos, pois como é uma unidade extremamente leve de processamento, você gasta menos tempo para criar, remover e trocar de contexto se comparado a um processo.
+
+
+
+Threads compartilham memória, compartilham informações sobre processos e a comunicação entre threads é extremamente mais eficaz pois elas se comunicam usando o mesmo espaço de memória.
+
+
+
+Ok, teoria demais? Vamos resumir a parada então para você sacar de uma vez.
+
+
+
+Um processo é um programa, tem sua fatia de memória reservada, faz chamadas ao sistema operacional para sobreviver e pode ter uma série de threads.
+
+
+
+Uma thread é uma ou mais unidades pequenininhas de processamento dentro de um processo, compartilham memória e são geralmente usadas para executar uma tarefa e morrer em seguida. 
+
+
+
+Agora trazendo para o Node.js, temos as Child Processes e as Worker Threads. 
+
+
+
+O seu programa Node.js é o processo pai e ele pode agendar novos processos para o sistema operacional executar outros programas em paralelo. 
+
+
+
+Geralmente são usadas para tudo que for assíncrono, como um agendamento de uma pesquisa no banco, escrita em arquivos, bater em APIs externas e por aí vai.
+
+
+
+Já as Worker Threads são threads agendadas pelo seu programa, que é o processo pai, usadas para executar tarefas que demandam processamento em memória, o que chamamos de CPU-intensive operations. 
+
+
+
+Como falei vou falar com detalhes sobre cada um em aulas específicas, mas por agora tenha em mente que para quando você precisar fazer algum algoritmo de ordenação em memória, conversão e mapeamento de dados, processar um relatório e por aí vai é mais indicado usar as Worker Threads.
+
+
+
+No fim é simples, precisou executar uma tarefa em segundo plano? Essa tarefa é uma tarefa que demanda processamento assíncrono? Então Child Process, senão Worker Threads.
+
+
+
+Nas próximas aulas vou entrar a fundo sobre como é o código dessas duas alternativas, mas é importante você ter em mente para que serve e onde é o melhor cenário para essas duas poderosíssimas alternativas no Node.js
+
+
+
+E já sabe né, esqueça de avaliar as aulas deste capítulo clicando na estrelinha abaixo. Eu sou Erick Wendel e até a próxima aula
+
+
+https://afteracademy.com/blog/what-is-a-process-in-operating-system-and-what-are-the-different-states-of-a-process
+
+https://betterprogramming.pub/learn-node-js-under-the-hood-37966a20e127
+
+https://betterprogramming.pub/is-node-js-really-single-threaded-7ea59bcc8d64
+
+https://www.guru99.com/difference-between-process-and-thread.html
+
+https://stackoverflow.com/questions/56312692/what-is-the-difference-between-child-process-and-worker-threads
+
+https://en.wikipedia.org/wiki/Input/output
+
+https://stackoverflow.com/questions/10300251/what-does-the-concept-of-worker-mean-in-programming
+
+https://stackoverflow.com/questions/15341551/what-counts-as-cpu-intensive-tasks-eg-sorting-searching-etc
+
+https://nodejs.org/api/worker_threads.html
+
+
