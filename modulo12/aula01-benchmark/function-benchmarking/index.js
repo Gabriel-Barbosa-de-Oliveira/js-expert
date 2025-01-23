@@ -1,18 +1,55 @@
 import Benchmark from "benchmark";
 import CartIdOld from "./cart-id-old.js";
 import CartIdNew from "./cart-id-new.js";
+import CartRmPropOld from "./cart-rm-prop-old.js";
+import CartRmPropNew from "./cart-rm-prop-new.js";
 
 const suite = new Benchmark.Suite;
 
+// suite
+//     .add('Cart#cartIdUUID', function () {
+//         new CartIdOld()
+//     })
+//     .add('Cart#cartIdCrypto', function () {
+//         new CartIdNew()
+//     })
+//     .on("cycle", (event) => console.log(String(event.target)))
+//     .on("complete", function () {
+//         console.log(`Fastest is ${this.filter('fastest').map('name')}`)
+//     })
+//     .run()
+
+const data = {
+    products: [
+        {
+            in: 'ae',
+            n: undefined,
+            abc: undefined,
+            a: undefined,
+            b: 123
+        },
+        {
+            in: 'ae',
+            n: undefined,
+            abc: undefined,
+            a: undefined,
+            b: 123
+        }
+    ]
+}
+
+
 suite
-    .add('Cart#cartIdUUID', function () {
-        new CartIdOld()
+    .add('Cart#rmEmptyPropsMapReduce', function () {
+        new CartRmPropOld(data)
     })
-    .add('Cart#cartIdCrypto', function () {
-        new CartIdNew()
+    .add('Cart#rmEmptyPropsFor', function () {
+        new CartRmPropNew(data)
     })
     .on("cycle", (event) => console.log(String(event.target)))
     .on("complete", function () {
         console.log(`Fastest is ${this.filter('fastest').map('name')}`)
     })
-    .run()
+    .run({ async: true })
+
+
