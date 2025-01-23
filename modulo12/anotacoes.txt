@@ -17,3 +17,9 @@ Qualidade do trabalho ligada diretamente a quantidade de monitoramentos que o cl
 Autocannon - Ajuda a analisar os pontos da aplicação 
 Clinic - sugere o que mudar para melhorar tbm 
 
+https://github.com/clinicjs/node-clinic-bubbleprof-examples?_gl=1*axv2vo*_ga*Nzk0NDg1OTE1LjE3MzYxODYzOTU.*_ga_37GXT4VGQK*MTczNzY0OTIwNS4yNS4xLjE3Mzc2NDk2NzguMC4wLjA.
+https://www.npmjs.com/package/0x
+https://clinicjs.org/
+https://www.npmjs.com/package/clinic
+https://github.com/mcollina/climem
+https://github.com/nearform/memleak-exercise
