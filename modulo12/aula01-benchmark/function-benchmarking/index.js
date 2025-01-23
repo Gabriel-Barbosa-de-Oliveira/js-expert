@@ -3,7 +3,11 @@ import CartIdOld from "./cart-id-old.js";
 import CartIdNew from "./cart-id-new.js";
 import CartRmPropOld from "./cart-rm-prop-old.js";
 import CartRmPropNew from "./cart-rm-prop-new.js";
+import CartPriceOld from "./cart-price-old.js";
+import CartPriceNew from "./cart-price-new.js";
 
+
+import database from "../database.js";
 const suite = new Benchmark.Suite;
 
 // suite
@@ -19,32 +23,45 @@ const suite = new Benchmark.Suite;
 //     })
 //     .run()
 
-const data = {
-    products: [
-        {
-            in: 'ae',
-            n: undefined,
-            abc: undefined,
-            a: undefined,
-            b: 123
-        },
-        {
-            in: 'ae',
-            n: undefined,
-            abc: undefined,
-            a: undefined,
-            b: 123
-        }
-    ]
-}
+// const data = {
+//     products: [
+//         {
+//             in: 'ae',
+//             n: undefined,
+//             abc: undefined,
+//             a: undefined,
+//             b: 123
+//         },
+//         {
+//             in: 'ae',
+//             n: undefined,
+//             abc: undefined,
+//             a: undefined,
+//             b: 123
+//         }
+//     ]
+// }
 
+
+// suite
+//     .add('Cart#rmEmptyPropsMapReduce', function () {
+//         new CartRmPropOld(data)
+//     })
+//     .add('Cart#rmEmptyPropsFor', function () {
+//         new CartRmPropNew(data)
+//     })
+//     .on("cycle", (event) => console.log(String(event.target)))
+//     .on("complete", function () {
+//         console.log(`Fastest is ${this.filter('fastest').map('name')}`)
+//     })
+//     .run({ async: true })
 
 suite
-    .add('Cart#rmEmptyPropsMapReduce', function () {
-        new CartRmPropOld(data)
+    .add('Cart#calcPriceMapReduce', function () {
+        new CartPriceOld(database)
     })
-    .add('Cart#rmEmptyPropsFor', function () {
-        new CartRmPropNew(data)
+    .add('Cart#calcPriceFor', function () {
+        new CartPriceNew(database)
     })
     .on("cycle", (event) => console.log(String(event.target)))
     .on("complete", function () {
