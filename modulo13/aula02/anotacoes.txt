@@ -1,0 +1,155 @@
+Node usa um pequeno numero de threads para suportar varios clientes 
+
+Elas tem duas categorias 
+
+Principal - Event Loop 
+
+Event Thread - Threadpool (Amontoado de threads) - roda coisas pesadas e assincronas 
+
+Event loop usa uma fila para execuções 
+
+Node usa arquitetura de eventos. Quando o tem algo mto pesado o event loop manda para o threadpool 
+
+
+Node.js usa um pequeno número de threads para suportar vários clientes. 
+
+
+
+Essas threads são divididas entre duas categorias, a thread principal, também chamada de event loop, ou event thread e o threadpool, que é um amontoado de threads que rodam em segundo plano para executar tarefas pesadas e assíncronas.
+
+
+
+Tanto o event loop quando sua aplicação rodam em uma mesma thread. 
+
+
+
+A coordenação entre as threads de segundo plano e a thread principal é executada usando uma fila
+
+
+
+O event loop executa as tarefas da fila seguindo exatamente a ordem em que foram criadas. 
+
+
+
+Quando você chama uma função assíncrona, ou seja que o resultado dela é resolvido no futuro, aquele callback que você passou para a função é adicionado na fila quando essa operação é finalizada.
+
+
+
+O Node.js usa uma arquitetura orientada a eventos, então ele usa o event loop para orquestrar a ordem e execução dos eventos e para tarefas pesadas o event loop delega as tarefas para um Thread Pool, aquele amontoado de threads que rodam em segundo plano que também é chamado de Worker Pool, e aguarda sua resposta.
+
+
+
+Essas tarefas pesadas são geralmente qualquer interação com o módulo FS, funções que exigem processamento em memória como as funções do módulo crypto e por aí vai
+
+
+
+Só para você entender a quantidade de coisas que acontecem no node, quando você sobe um servidor simples:
+
+Sua aplicação começa importando todos os módulos e registrando os callbacks de eventos -> linha 1, linha 11 (circular handler)  e linha 12 circular somente () => console.log('server running!'))
+E então ela entra no Event Loop, respondendo aos clientes com o callback apropriado -> linha 3 a 9
+Esse callback é executado de forma síncrona e pode agendar tarefas assíncronas para continuar recebendo clientes até que ele termine.  -> linha 5 a 7
+Os callbacks assíncronos são resolvidos também no event loop, ele vai esperar e resolver essas funções assíncronas  linha 6
+
+
+Se o event loop está demorando demais para executar um callback ou o thread pool demorou demais para enviar a resposta de volta ao event loop, nós chamamos esse processo de bloqueio do event-loop.
+
+
+
+Enquanto o event-loop está bloqueado por um request de um cliente, ele não consegue responder outros clientes e é justamente por isso que não é legal ficar processando itens em memória no Node.js. 
+
+
+
+Se você rodar essas funções pesadas em qualquer uma das threads, a sua taxa de resposta do servidor vai sofrer, e dependendo do caso, um cliente mal intencionado pode facilmente rodar um ataque para fazer sua aplicação travar, para que você não consiga responder a outros clientes. 
+
+
+
+Nós já falamos sobre esse ataque na aula sobre segurança em regex, você lembra? Esse é o famoso Denial of Service Attack.
+
+
+
+Então quando você ouvir alguém falando que o Node.js é single-thread, você pode dizer que isso não é 100% verdade, sua aplicação e o event loop rodam na mesma thread mas tarefas podem sim agendar outras threads ou processos para serem executadas em segundo plano. 
+
+
+
+Por isso, como um Node.js developer você não precisa nem pensar sobre o que acontece no event-loop ou ter medo de alguma thread alterar dois valores ao mesmo tempo, pois qualquer alteração de variáveis acontecem somente na thread principal.
+
+
+
+Isso significa que você concorrência não é problema para aplicações Node.js
+
+
+
+Só que, tudo isso tem um custo, uma vez que o Node usa essa única thread para responder aos callbacks, você precisa de outras formas para conseguir alcançar o tão sonhado processamento em paralelo.
+
+
+
+E hoje temos duas formas de fazer isso, usando Child Processes e Worker Threads.
+
+
+
+Então fique ligado nas próximas aulas que vou te mostrar na prática como funcionam essas bruxarias do Node.js haha.
+
+
+
+Espero que essa aula tenha superado suas expectativas, não esqueça de avaliar essa aula clicando na estrelinha abaixo.
+
+
+
+Eu sou Erick Wendel e até a próxima aula.
+
+
+
+Leitura Recomendada
+
+https://node.dev/post/understanding-worker-threads-in-node-js
+
+https://nodejs.org/en/docs/guides/dont-block-the-event-loop
+
+https://rclayton.silvrback.com/speaking-intelligently-about-java-vs-node-performance#:~:text=Java%20will%20almost%20always%20be,development%20than%20the%20V8%20runtime.
+
+
+
+  
+ 
+Comentários
+Dúvidas
+Deixe seu comentário
+Meu Progresso - 92.0%
+80 de 87 aulas
+Introdução ao Curso
+2 aulas
+Javascript Testing
+9 aulas
+Conceitos fundamentais sobre o ciclo de vida do Javascript Parte 01
+6 aulas
+Conceitos fundamentais sobre o ciclo de vida do Javascript - Parte 02
+7 aulas
+Advanced Javascript Data Types
+7 aulas
+Expressões Regulares - RegExp
+5 aulas
+Design Patterns PT 01 - Best Practices and Creational Design Patterns
+6 aulas
+Design Patterns PT 02 - Behavioural and Structural Design Patterns
+7 aulas
+Masterizando o NPM
+5 aulas
+Node.js Command Line Interface (CLI)
+8 aulas
+Node.js Streams
+5 aulas
+Error Handling
+5 aulas
+Performance
+6 aulas
+Node.js long-running processing
+Introdução ao Capítulo
+Entenda a diferença entre Thread e Processo - Node.js é realmente single thread?
+Node Process e Modelo de concorrência
+Chamando outras linguagens de programação a partir do Node.js com Child process Spawn
+Processamento massivo em arquivos usando Child Processes Fork
+Editando imagens usando Node.js e Worker Threads
+Javascript Security
+2 aulas
+Considerações finais e próximos passos
+1 aula
