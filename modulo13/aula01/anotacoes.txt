@@ -154,5 +154,7 @@ https://stackoverflow.com/questions/15341551/what-counts-as-cpu-intensive-tasks-
 https://nodejs.org/api/worker_threads.html
 
 
+Executar python 
 
 
+python3 index.py '{"filePath": "my-data.csv"}'
