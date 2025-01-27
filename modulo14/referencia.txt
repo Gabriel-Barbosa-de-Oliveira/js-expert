@@ -1,0 +1,256 @@
+Bom, na maioria dos módulos eu expliquei sobre segurança de aplicações envolvendo o contexto do módulo em questão.
+
+
+
+Como nosso contexto é JavaScript, eu não vou entrar muito a fundo no ponto de vista de infraestrutura, micro serviços ou bancos de dados. 
+
+
+
+Para isso, deixei aqui alguns links de palestras que fiz pelo mundo com dicas úteis para você revisar tudo que tem feito por ai.
+
+
+
+Assim como fiz no módulo de design patterns, vamos navegar de volta em algumas aulas, comentando sobre o que você viu lá e dar aquela refrescada na memória
+
+
+
+Vou separar cada pedaço desse vídeo como uma dica específica sobre segurança de apps JavaScript, assim fica mais fácil de você revisar no futuro.
+
+
+
+Vamos começar por um dos meus módulos favoritos aqui do treinamento, o módulo 5 sobre Expressões regulares.
+
+
+
+#1 - Evite ataques DoS em Expressões regulares
+
+
+
+Nessa aula, eu mostrei como uma simples expressão regular ou Regex pode derrubar sua aplicação, para resolver esse problema, nós instalamos o módulo Safe-regex para validar as expressões antes de executá-la.
+
+
+
+Existem outros pacotes bem legais, para te ajudar a escrever código seguro em tempo de compilação. 
+
+
+
+Se você nunca ouviu falar sobre o ESLint, ele é uma excelente ferramenta para JavaScript para validar regras de código.
+
+E para ele, tem um plugin focado em segurança de apps JS, bem que valida regras e exibe na hora se você tem algum problema do ponto de vista de código
+
+
+
+#2 - Evite ataques em pacotes NPM
+
+Já no módulo sobre pacotes NPM nós falamos sobre esse artigo muito doido da Snyk falando sobre como usuários mal intencionados podem injetar pacotes sem você notar direto no package-lock.json, com o famoso ataque de package-lock.json pollution
+
+
+
+Estou gravando essa aula em Janeiro de 2022 e aconteceu um ataque recente que repercutiu o mundo inteiro.
+
+
+
+Um desenvolvedor injetou um vulnerabilidade de propósito em alguns pacotes JavaScript super populares, os pacotes Colors e Faker.js como forma de protesto 
+
+
+
+Sim, é ele mesmo que você está pensando. Nós usamos o pacote Faker aqui no curso com bastante frequência, mas não se preocupe, eu te conto em alguns instantes como você pode continuar usando a versão anterior do pacote.
+
+
+
+Só o pacote npm Colors, recebe mais de 20 milhões de downloads por semana, é usado em mais de 4 milhões de projetos e é uma dependência de quase 19 mil outros pacotes 😱
+
+
+
+E agora? Será que o dev endoidou de vez?
+
+
+
+Na prática, essa não é a primeira vez que um dev de projetos Open Source se frustra, desiste do projeto ou surta de vez.
+
+
+
+Essa foi a vez do Marak, que mantém centenas de pacotes Open Source que, apesar de serem usados por empresas gigantes, ele trabalha em seu tempo livre e não ganha sequer doações dessas empresas.
+
+
+
+Eu não vou comentar se acho que ele está certo ou errado.
+
+
+
+Ele injetou um loop infinito nos pacotes colors e Faker.js para que todos que atualizassem os pacotes para a versão mais recente, simplesmente travassem suas aplicações.
+
+
+
+Sobre a vulnerabilidade, aqui no curso você aprendeu sobre como instalar pacotes com versões fixas para evitar que novas versões simplesmente quebram todo o seu sistema.
+
+
+
+Então provavelmente, o que você fez em seus projetos aqui do curso, não serão afetados por essa nova versão do pacote.
+
+
+
+A principal dica de segurança aqui é: estabeleça uma rotina de atualização e validação de seus pacotes. 
+
+
+
+Nunca permita que seus pacotes se atualizem sozinhos, eu pessoalmente já derrubei servidores em produção porque um pacote que a gente usava era atualizado toda vez que precisávamos fazer um deploy. 
+
+
+
+Foi bem complicado haha
+
+O Liran Tal da Snyk, escreveu esse excelente artigo que já deixei aqui na descrição para você olhar para saber o que fazer e todos os detalhes dessa treta com esses pacotes.
+
+E além de tudo isso, temos ainda o problema de injeção de módulos maliciosos que mostrei no módulo sobre pacotes NPM, que também foi escrito pela Snyk. 
+
+
+
+#3 - Jamais retorne erros internos para seus clientes
+
+
+
+No módulo sobre Error Handling eu mostrei todos os erros não capturados pelo Node.js.
+
+
+
+Mas a lição de segurança que você precisa ter aqui, é nunca retornar essas mensagens de erro ao cliente final, pois ele pode se aproveitar dos resultados. 
+
+
+
+Deu algum problema? É mensagem de internal server error e já era!
+
+
+
+#4 - Evite ataques DoS e adicione uma ferramenta de rate limit
+
+
+
+Já no módulo de performance, você aprendeu sobre como visualizar vazamentos de memória e principalmente, como um cliente pode bombardear sua aplicação até ou travar tudo até tirar todo o sistema do ar.
+
+
+
+Como o conceito do curso é sobre JavaScript e não infraestrutura, eu não fui muito a fundo sobre algumas alternativas que você pode adicionar na aplicação para evitar esse tipo de problema.
+
+
+
+O que eu sempre faço é usar uma ferramenta de rate limit, uma ferramenta que controle qual é a quantidade máxima de requests que um cliente pode fazer vindo do mesmo IP e recuse o acesso caso ele exceda os limites. 
+
+
+
+Lá no treinamento de apps serverless, eu ensino a trabalhar com a AWS API Gateway, gerando chaves com cotas específicas para cada cliente, assim você consegue limitar a quantidade de acessos simultâneos e claro, ficar sabendo quando é um ataque ou só seu cliente acessando normalmente.
+
+
+
+Ah e claro né, se você ainda não fez isso, contrate uma ferramenta de Application Performance Monitoring, independente qual, escolha uma e ative alertas para entender a saúde da sua aplicação, isso pode te fazer economizar uma boa grana em segurança e infraestrutura no futuro.
+
+
+
+#5 - Evite travar o event-loop
+
+
+
+Já no módulo sobre funções de longa duração, nosso conceito de segurança vem de encontro com o que acabei de falar. 
+
+
+
+Se você evitar rodar processamento síncrono na thread principal do Node.js, você além de tornar sua aplicação mais saudável evita ataques como os de DDoS que vão travar seu programa Node.js até que você não consiga mais responder a requests.
+
+
+
+A forma ideal é que seus requests não processem muita coisa em memória, que você receba os parâmetros do seu cliente, processe-os em segundo plano e só depois você os avisa que o processo se encerrou.
+
+
+
+Mas caso você realmente precise processar dados entre requests, use e abuse dos child processes e worker threads para liberar a thread principal, sempre lembrando de controlar o pool de tarefas.
+
+
+
+ #6 - Evite injeção de código arbitrário
+
+
+
+Segurança de aplicações, em grande parte das vezes se resume a como você vai dificultar a vida do usuário mal intencionado. 
+
+
+
+E isso deve-se a como você vai controlar o acesso aos seus serviços, como vai validar a entrada de dados e principalmente, como vai entregar mensagens ao cliente final.
+
+demo módulo extra
+
+
+
+E para fechar, eu fiz algumas palestras na gringa falando sobre dicas para melhorar a segurança de suas aplicações Node.js e lá eu falo sobre outros contextos como infraestrutura, banco de dados e microsserviços, o link também está aqui na descrição
+
+
+
+Esse módulo foi um módulo feito para agrupar o que você já viu aqui no treinamento do ponto de vista de segurança de aplicações. 
+
+
+
+O nosso contexto aqui do curso, é sobre JavaScript e acredito essas são as dicas que você já consegue implementar ai no seu trabalho o mais rápido possível.
+
+
+
+Para os próximos passos, eu te convido a dar uma olhada nos links que deixei aqui na descrição e claro, aplique ao máximo essas dicas em seu dia a dia que tenho certeza que isso pode te ajudar demais
+
+
+
+Não esqueça de avaliar essa aula clicando na estrelinha abaixo, Eu sou o Erick Wendel e te vejo no próximo vídeo
+
+
+
+Leitura recomendada
+
+https://blog.sqreen.com/nodejs-security-best-practices/
+
+https://snyk.io/blog/what-is-package-lock-json/
+
+https://snyk.io/blog/why-npm-lockfiles-can-be-a-security-blindspot-for-injecting-malicious-modules/
+
+https://snyk.io/blog/open-source-npm-packages-colors-faker/
+
+https://erickwendel.com/talk/detail/5fa9561af663f6a8b69a7a19
+
+https://www.npmjs.com/package/express-rate-limit
+
+https://snyk.io/blog/open-source-npm-packages-colors-faker/
+
+  
+ 
+Comentários
+Dúvidas
+Deixe seu comentário
+Meu Progresso - 97.7%
+85 de 87 aulas
+Introdução ao Curso
+2 aulas
+Javascript Testing
+9 aulas
+Conceitos fundamentais sobre o ciclo de vida do Javascript Parte 01
+6 aulas
+Conceitos fundamentais sobre o ciclo de vida do Javascript - Parte 02
+7 aulas
+Advanced Javascript Data Types
+7 aulas
+Expressões Regulares - RegExp
+5 aulas
+Design Patterns PT 01 - Best Practices and Creational Design Patterns
+6 aulas
+Design Patterns PT 02 - Behavioural and Structural Design Patterns
+7 aulas
+Masterizando o NPM
+5 aulas
+Node.js Command Line Interface (CLI)
+8 aulas
+Node.js Streams
+5 aulas
+Error Handling
+5 aulas
+Performance
+6 aulas
+Node.js long-running processing
+6 aulas
+Javascript Security
+Introdução
+Boas práticas de segurança em apps JavaScript + Revisando o que fizemos em outras aulas
